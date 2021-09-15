@@ -15,4 +15,5 @@ hour = hour_epoch % 24 + hour_epoch
 import datetime
 
 t = datetime.datetime(1970, 1, 1, 0, 0)
-print(t + datetime.timedelta(days=day_epoch, hours=hour, minutes=min, seconds=sec))
+#print(t + datetime.timedelta(days=day_epoch, hours=hour, minutes=min, seconds=sec))
+print(datetime.timedelta(days=day_epoch,hours=hour,minutes=min,seconds=sec))
