@@ -3,18 +3,12 @@ import turtle
 leo = turtle.Turtle()
 
 
-def triangle(t, length):
-    for i in range(3):
-        t.fd(length)
-        t.lt(120)
-
-
-def growth_triangle(t, n, length, growth, angle):
+def archimedean_spiral(t, n, length, growth, angle):
     for i in range(n):
-        triangle(t, length + i * growth)
-        t.rt(angle)
+        t.fd(length + i * growth)
+        t.lt(angle)
 
 
-growth_triangle(leo, 60, 30, 4, 5)
+archimedean_spiral(leo, 500, 1, 0.1, 5)
 
 turtle.mainloop()
