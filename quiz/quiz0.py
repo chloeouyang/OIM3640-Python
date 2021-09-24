@@ -58,7 +58,7 @@ def weight_on_planet(weight_on_earth,planet):
         if planet == 'mars':
             weight_on_planet=0.378*weight_on_earth
         else:
-                weight_on_planet=2.528*weight_on_earth
+            weight_on_planet=2.528*weight_on_earth
     return weight_on_planet
 
 print(weight_on_planet(weight_on_earth,planet))
