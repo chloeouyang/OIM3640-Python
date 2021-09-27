@@ -15,6 +15,6 @@ def test_square_root():
         b=mysqrt(a)
         c=math.sqrt(a)
         d=abs(b-c)
-        print(a,b,c,d)
+        print(f'{a:0}{b:14.12}{c:14.12}{d:10}')
 
 test_square_root()
