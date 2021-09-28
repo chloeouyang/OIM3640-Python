@@ -1,11 +1,16 @@
 import math
 
-def mysqrt(a):
-    b=1/2
-    sqrt=a**b
-    return sqrt
 
-print(mysqrt(25))
+def mysqrt(a):
+    x = a / 2
+    while True:
+        y = (x + a / x) / 2
+        if y == x:
+            break
+        x = y
+    return y
+
+# print(mysqrt(25))
 
 def test_square_root():
     print("a   mysqrt(a)     math.sqrt(a)  diff")
@@ -15,6 +20,8 @@ def test_square_root():
         b=mysqrt(a)
         c=math.sqrt(a)
         d=abs(b-c)
-        print(f'{a:0}{b:14.12}{c:14.12}{d:10}')
+        print(f'{a}{b:<17.12}{c:<17.12}{d}')
 
 test_square_root()
+
+#question about aligning the data
