@@ -42,24 +42,25 @@ Notice:
 3. Write your own test code, i.e. call the function.
 """
 
-#1. get the weight on earth and the planet used to calculate
-#2. calculate the weight on that planet
-#3. print the weight on that planet
+# 1. get the weight on earth and the planet used to calculate
+# 2. calculate the weight on that planet
+# 3. print the weight on that planet
 
-weight_on_earth=float(input('What is your weight on earth?>>>'))
-planet=input('What planet do you want to use to calculate?>>>')
+weight_on_earth = float(input("What is your weight on earth?>>>"))
+planet = input("What planet do you want to use to calculate?>>>")
 
-def weight_on_planet(weight_on_earth,planet):
+
+def weight_on_planet(weight_on_earth, planet):
     """get the weight on earth and return the equivalent weight on that planet"""
 
-    if planet == 'moon':
-        weight_on_planet=0.165*weight_on_earth
+    if planet == "moon":
+        weight_on_planet = 0.165 * weight_on_earth
     else:
-        if planet == 'mars':
-            weight_on_planet=0.378*weight_on_earth
+        if planet == "mars":
+            weight_on_planet = 0.378 * weight_on_earth
         else:
-            weight_on_planet=2.528*weight_on_earth
+            weight_on_planet = 2.528 * weight_on_earth
     return weight_on_planet
 
-print(weight_on_planet(weight_on_earth,planet))
 
+print(weight_on_planet(weight_on_earth, planet))
