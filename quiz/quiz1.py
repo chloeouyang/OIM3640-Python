@@ -51,7 +51,8 @@ def calculate_avg(n):
     a=n
     for i in range(1,n+1):
         number_total+=i*i
-        avg=number_total/a
+    
+    avg=number_total/a
     return avg
 
 # When you've completed your function, uncomment the
