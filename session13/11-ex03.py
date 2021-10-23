@@ -1,0 +1,2 @@
+# Answer: Another global variable is "number_fib_calls".
+# The difference between number_fib_calls and known is that the number_fib_calls is declared after it is used, so there should be a global indicator to tell function that this varialble is a global varialble. But known is declared before it is used in the function, so the global indicator is not necessary.
