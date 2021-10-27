@@ -10,19 +10,7 @@ but you will lose 10 points.
 APIKEY = '8f62260aa7890d58d9a026e2810341ea'
 ----------------------------------------------------------------------
 """
-import urllib.request
-import json
-
-APIKEY = '8f62260aa7890d58d9a026e2810341ea'
-city = 'Wellesley'
-country_code = 'us'
-url = f'http://api.openweathermap.org/data/2.5/weather?q={city},{country_code}&APPID={APIKEY}'
-
-# print(url)
-f = urllib.request.urlopen(url)
-response_text = f.read().decode('utf-8')
-response_data = json.loads(response_text)
-print(response_data)
+APIKEY = 'c535fd6eae12b678c24a0339e9e08fe6'
 
 
 def get_wind_speed():
@@ -30,8 +18,18 @@ def get_wind_speed():
     Returns current wind speed in your current place
     from api.openweathermap.org
     """
-    pass
+    import urllib.request
+    import json
 
+    city = 'Wellesley'
+    country_code = 'us'
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={city},{country_code}&APPID={APIKEY}'
+
+    f = urllib.request.urlopen(url)
+    response_text = f.read().decode('utf-8')
+    response_data = json.loads(response_text)
+
+    return response_data['wind']['speed']
 
 # When you've completed your function, uncomment the
 # following lines and run this file to test!
@@ -60,7 +58,17 @@ def reverse_DNA(data):
     """
     Given a DNA sequence (a string), return the complement DNA sequence
     """
-    pass
+    d = dict()
+    d['A'] = 'T'
+    d['T'] = 'A'
+    d['C'] = 'G'
+    d['G'] = 'C'
+    complementary_data = ''
+
+    for letter in data:
+        complementary_data += d[letter]
+
+    return complementary_data
 
 
 # # Uncomment the following lines to test
@@ -102,8 +110,13 @@ def people_in_train(data):
     """
     Given a list of int tuples, return an integer
     """
-    pass
+    count = 0
 
+    for item in data:
+        count += item[0]
+        count -= item[1]
+
+    return count
 
 # # Uncomment the following lines to test
 # passengers1 = [(100, 0), (30, 50), (50, 100)]
@@ -141,6 +154,12 @@ def read_cities_to_list():
         pprint.pprint(data)
     # You can write code below
 
+    cities = list()
+
+    for item in data['responsePayloadData']['data']['MA']:
+        cities.append(item['city'])
+
+    return cities
 
 # When you've completed your function, uncomment the
 # following lines and run this file to test!
@@ -168,14 +187,21 @@ def first_letters(cities):
 
     Return: a dictionary of letter: city pairs
     """
-    pass
+    d = dict()
+
+    for city in cities:
+        item = d.get(city[0], list())
+        item.append(city)
+        d[city[0]] = item
+
+    return d
 
 
 # When you've completed your function, uncomment the
 # following lines and run this file to test!
 
-# city_names = read_cities_to_list()
-# print(first_letters(city_names))
+city_names = read_cities_to_list()
+print(first_letters(city_names))
 
 ## Expected output:
 # {'A': ['ABINGTON', 'AGAWAM', 'ALLSTON', 'AMHERST', 'ARLINGTON', 'ASHLAND', 'ATTLEBORO'], 'B': ['BEDFORD', 'BELCHERTOWN', 'BELMONT', 'BILLERICA', 'BOSTON', 'BOURNE', 'BRAINTREE', 'BRIGHTON', 'BROCKTON', 'BROOKLINE', 'BURLINGTON'], 'C': ['CAMBRIDGE', 'CHATHAM', 'CHELSEA', 'CHESTNUT HILL', 'CHICOPEE', 'COHASSET', 'CONCORD'], 'D': ['DANVERS', 'DEDHAM', 'DORCHESTER'], 'E': ['EAST BOSTON', 'EAST BRIDGEWATER', 'EAST FALMOUTH', 'EAST HARWICH', 'EVERETT'], 'F': ['FALL RIVER', 'FOXBOROUGH', 'FRAMINGHAM'], 'G': ['GEORGETOWN', 'GLOUCESTER', 'GRANBY', 'GREAT BARRINGTON', 'GREENFIELD'], 'H': ['HADLEY', 'HANOVER', 'HANSON', 'HARWICHPORT', 'HAVERHILL', 'HINGHAM', 'HOLBROOK', 'HOLLISTON', 'HOLYOKE', 'HOPKINTON', 'HUDSON', 'HYANNIS', 'HYDE PARK'], 'I': ['IPSWICH'], 'K': ['KINGSTON'], 'L': ['LANESBOROUGH', 'LAWRENCE', 'LEOMINSTER', 'LEXINGTON', 'LONGMEADOW', 'LOWELL', 'LYNN'], 'M': ['MALDEN', 'MARBLEHEAD', 'MARLBOROUGH', 'MASHPEE', 'MAYNARD', 'MEDFIELD', 'MEDFORD', 'METHUEN', 'MIDDLEBOROUGH', 'MIDDLETON', 'MILFORD', 'MILLBURY', 'MILLIS'], 'N': ['NEEDHAM', 'NEW BEDFORD', 'NEWTON', 'NORTH ANDOVER', 'NORTH ATTLEBOROUGH', 'NORTH DARTMOUTH', 'NORTH EASTON', 'NORTH GRAFTON', 'NORTHAMPTON', 'NORWELL'], 'O': ['ORLEANS', 'OXFORD'], 'P': ['PALMER', 'PEABODY', 'PLAINVILLE', 'PROVINCETOWN'], 'Q': ['QUINCY'], 'R': ['RANDOLPH', 'READING', 'REVERE', 'ROSLINDALE', 'ROWLEY'], 'S': ['SALEM', 'SALISBURY', 'SANDWICH', 'SAUGUS', 'SEEKONK', 'SHARON', 'SOMERVILLE', 'SOUTH EASTON', 'SOUTH HAMILTON', 'SOUTH WEYMOUTH', 'SOUTH YARMOUTH', 'SOUTHWICK', 'SPRINGFIELD', 'STONEHAM', 'STOUGHTON', 'STURBRIDGE', 'SWANSEA'], 'T': ['TAUNTON'], 'W': ['WALTHAM', 'WAREHAM', 'WATERTOWN', 'WAYLAND', 'WELLESLEY', 'WEST BRIDGEWATER', 'WEST NEWTON', 'WEST SPRINGFIELD', 'WESTBOROUGH', 'WESTFORD', 'WESTWOOD', 'WEYMOUTH', 'WILBRAHAM', 'WILMINGTON', 'WINCHENDON', 'WINCHESTER', 'WINTHROP', 'WOBURN', 'WORCESTER', 'WRENTHAM']}
@@ -188,3 +214,14 @@ Your function should first print the longest list of cities with same first
 letter, followed by the second longest, and so on. 
 --------------------------------------------------------------------------
 """
+
+def print_cities_dictionary(cities_dictionary):
+    sorted_cities = sorted(cities_dictionary.items(),
+                           key=lambda kv: len(kv[1]),
+                           reverse=True)
+
+    print(sorted_cities)
+
+
+cities_dictionary = first_letters(city_names)
+print_cities_dictionary(cities_dictionary)
